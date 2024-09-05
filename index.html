@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Inventory Management System</title>
+</head>
+<body>
+
+ <!-- This is Form section for adding items -->
+    <div class="container">
+        <h1>Inventory Management System</h1>
+        <form id="itemForm">
+            <label for="name">Item Name:</label>
+ <!-- Here we use validator "required" for item name not be empty -->
+            <input type="text" id="name" placeholder="Enter item here" required>
+ <!-- Here we use validator "required"and "min" attribute for quantity positive integer -->
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" placeholder="Enter Quantity" min="1" required>
+ <!-- Here we use validator "required" and "min","step"attribute for price should be positive number -->
+            <label for="price">Price:</label>
+            <input type="number" id="price" placeholder="Enter Price" min="0.01" step="0.01" required>
+<!-- This is Category section -->
+            <label for="category">Category:</label>
+            <select id="category" required>
+                <option value="Electronics">Electronics</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Furniture">Furniture</option>
+            </select>
+
+            <button type="submit">Add Item</button>
+        </form>
+<!-- This is Search section -->
+        <div class="search-bar">
+            <label for="category">Filter Items here:</label>
+            <input type="text" id="search" placeholder="Search by Name or Category" oninput="searchItems()">
+        </div>
+<!-- This is Table section where we receive added items -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Total Value</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+<!-- Items will be dynamically inserted here -->
+            <tbody id="inventoryTable"></tbody>
+        </table>
+
+<!-- Here we get Total Values of the Inventory -->
+        <h3>Total Inventory Value: $<span id="totalValue">0.00</span></h3>
+
+<!-- Using these two buttons we are sorting the items -->
+        <button class="btn1" onclick="sortItems('asc')">Sort by Price (Asc)</button>
+        <button class="btn2" onclick="sortItems('desc')">Sort by Price (Desc)</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
